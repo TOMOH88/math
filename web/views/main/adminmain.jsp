@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>감성수학</title>
+
 </head>
 <body>
 <%@ include file="../common/Adminheader.jsp" %>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String userId = (String)session.getAttribute("userId"); %>
 <!doctype html>
 <html lang="kr">
 	<head>
@@ -7,40 +8,11 @@
 	<title>감성수학</title>
 <script type="text/javascript" src="/math/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-function checkId() {
-	$.ajax({
-		url: "/math/chkid",
-		type: "post",
-		data: {userid: $("#email2").val()},
-		success: function(data) {
-				console.log("success : "+ data);
-				if(data == "ok"){
-					alert("사용 가능한 아이디입니다.");
-					$("#password2").focus();
-				}else{
-					alert("이미 사용중인 아이디입니다.\n"
-							+"다시 입력하십시요.");
-					$("#email2").select();
-				}
-		},
-		error: function( jqXHR, textStatus, errorThrown) {
-			console.log("error : "+  jqXHR +", "+textStatus+", "+errorThrown);
-		}
-	});
-	return false;
-}
+<% if(userId != null){%>
 $(function() {
-	$("#password3").blur(function() {
-		console.log("포커스 사라짐");
-		var pwd1 = $("#password2").val();
-		var pwd2 = $("#password3").val();
-		if(pwd1 != pwd2){
-			alert("암호와 암호 확인이 일치하지 않습니다.\n"
-					+"다시 입력하십시요.");
-			$("#password2").select();
-		}
-	});
-});
+	location.href="views/main/adminmain.jsp";
+});	
+<%}%>
 </script>
 <style rel="stylesheet">
 @charset "UTF-8";
